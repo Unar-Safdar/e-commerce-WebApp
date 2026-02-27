@@ -1,11 +1,11 @@
 // src/components/Login.jsx
-import { 
-  TextField, 
-  Button, 
-  Typography, 
-  Paper, 
-  Box, 
-  Snackbar, 
+import {
+  TextField,
+  Button,
+  Typography,
+  Paper,
+  Box,
+  Snackbar,
   Alert,
   Container,
   Fade,
@@ -16,7 +16,7 @@ import {
 import { useNavigate, Link } from "react-router-dom";
 import { Person, Email, Lock } from "@mui/icons-material";
 import { useState } from "react";
-import { login } from "../services/logIn"; 
+import { login } from "../services/logIn";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -32,9 +32,15 @@ const Login = () => {
 
     try {
       const res = await login(form.email, form.password);
+      console.log("LOGIN RESPONSE =>", res);
       if (res?.user?.token) {
         setOpen(true);
-        setTimeout(() => navigate("/home"), 1500);
+        if (res.user.role === "admin") {
+          navigate("/dashboard"); // Admin goes to dashboard
+        } else {
+          navigate("/home"); // Regular user goes to home
+        }
+
       } else {
         alert(res.message || "Login failed");
       }
@@ -46,7 +52,7 @@ const Login = () => {
   };
 
   return (
-    <Container 
+    <Container
       maxWidth="lg"
       sx={{
         minHeight: '100vh',
@@ -183,8 +189,8 @@ const Login = () => {
       </Fade>
 
       {/* Success Snackbar */}
-      <Snackbar 
-        open={open} 
+      <Snackbar
+        open={open}
         autoHideDuration={3000}
         onClose={() => setOpen(false)}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}

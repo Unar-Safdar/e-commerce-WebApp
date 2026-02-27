@@ -4,11 +4,14 @@ const Product = require('../models/productModdle.js');
 
 const addProduct = async (req, res) => {
     try {
-        const { name, description, price, discountPrice, category, brand, sku, stock, isActive } = req.body;
-        const newProduct = await Product.create({ name, description, price, discountPrice, category, brand, sku, stock, isActive });
-        console.log(newProduct, 'line 9')
+        const { productName, description, price, discountPrice, category, brand, sku, stock, isActive } = req.body;
+
+        const newProduct = await Product.create({ productName, description, price, discountPrice, category, brand, sku, stock, isActive });
+
+        // console.log(newProduct )
         // const result = await newProduct.save();
-        console.log(newProduct, 'lin11')
+
+        // console.log(newProduct, 'lin11')
         res.status(200).json({ message: "Product created", success: true, newProduct })
     } catch (err) {
         res.send({ message: "Product creation failed", err })

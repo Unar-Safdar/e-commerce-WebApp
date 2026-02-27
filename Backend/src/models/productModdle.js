@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema, model } = require("mongoose");
 
 const ProductSchema = new Schema({
-    name: {
+    productName: {
         type: String,
         required: true,
         trim: true,
@@ -20,22 +20,22 @@ const ProductSchema = new Schema({
         min: 0,
     },
 
-    // discountPrice: {
-    //     type: Number,
-    //     min: 0,
-    // },
+    discountPrice: {
+        type: Number,
+        min: 0,
+    },
 
     category: {
         type: String,
         
-        ref: "Category",
+        // ref: "Category",
         required: true,
     },
 
-    // brand: {
-    //     type: String,
-    //     trim: true,
-    // },
+    brand: {
+        type: String,
+        trim: true,
+    },
 
     sku: {
         type: String,

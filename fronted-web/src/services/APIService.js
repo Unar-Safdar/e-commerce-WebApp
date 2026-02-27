@@ -15,12 +15,12 @@ export const apiRequest = (url, params = {}) => {
                     // If the response is not OK (e.g., 404, 500), reject the promise with an error
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                console.log(response);
+                // console.log(response);
                 return response.json();
             })
             .then((data) => {
                 // Resolve the promise with the data
-                console.log(data);
+                // console.log(data);
                 resolve(data);
             })
             .catch((error) => {

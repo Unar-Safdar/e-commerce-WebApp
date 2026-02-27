@@ -10,7 +10,7 @@ import { apiRequest } from "./APIService";
  * @param {string} lastName The user's password.
  * @returns {Promise<object|null>} User data and token on success, null on failure.
  */
-export async function signup(firstName, lastName, email, password, role) {
+export async function signup(firstName, email, password, role) {
   try {
     const data = await apiRequest(`/signup`, {
       method: "POST",

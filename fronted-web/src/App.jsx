@@ -3,6 +3,7 @@ import Signup from "./pages/SignUp.jsx"
 import Login from "./pages/Login.jsx";
 import Home from "./pages/HOme.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import AddProducts from "./pages/addProducts.jsx";
 
 function App() {
   return (
@@ -15,6 +16,16 @@ function App() {
           element={
             <ProtectedRoute>
               <Home />
+              
+            </ProtectedRoute>
+          }
+        />
+          <Route
+          path="//dashboard"
+          element={
+            <ProtectedRoute>
+              <AddProducts />
+              
             </ProtectedRoute>
           }
         />
