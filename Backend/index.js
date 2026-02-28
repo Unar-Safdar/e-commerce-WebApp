@@ -3,9 +3,12 @@ const express = require('express');
 const Db = require('./src/Db/db.js')
 const authRoute = require("./src/routes/authRoute.js")
 const productRoutes = require("./src/routes/productRoute.js")
+const mailRoutes = require("./src/routes/mailRoute.js")
+const main = require("./src/controllers/GimniApiIntegratiom.js")
 const cors = require("cors")
 require("dotenv").config()
 const cookieParser = require("cookie-parser")
+// main()
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -23,6 +26,7 @@ app.use(cors({
 app.use(express.json())
 app.use("/api", authRoute)
 app.use("/api/product", productRoutes)
+app.use("/api",mailRoutes )
 app.use(cookieParser());
 
 app.listen(PORT, () => {

@@ -4,6 +4,7 @@ import Login from "./pages/Login.jsx";
 import Home from "./pages/HOme.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import AddProducts from "./pages/addProducts.jsx";
+import Contact from "./pages/ContactUs.jsx";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/sendmail" element={<Contact />} />
         <Route
           path="/home"
           element={
